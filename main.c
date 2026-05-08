@@ -33,6 +33,9 @@ int option_title_y;
 int option_1_y;
 int option_final_y;
 
+WINDOW *input_window;
+window_info input_info;
+
 WINDOW *bubble_window;
 window_info bubble_info;
 
@@ -40,6 +43,7 @@ window_info bubble_info;
 int main(void) {
 
 	int key_input;
+	int user_input;
 	int highlight = 4;
 
 	title_info.start_x = 4;
@@ -57,8 +61,13 @@ int main(void) {
 	option_1_y = 4;
 	option_final_y = 5;
 
+	input_info.start_x = title_info.start_x;
+	input_info.start_y = title_info.start_y;
+	input_info.height = 4;
+	input_info.width = 100;
+	
 	bubble_info.start_x = title_info.start_x;
-	bubble_info.start_y = title_info.height + 2;
+	bubble_info.start_y = title_info.start_y;
 	bubble_info.height = 8;
 	bubble_info.width = 100;
 
@@ -73,12 +82,13 @@ int main(void) {
 	ncurse_initialization();
 	refresh();
 
+ menu:
+	
 	// Create and print to title window
 	title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
 	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "Welcome to Visual Algorithms.");
 	wrefresh(title_window);
 
- menu:
 	// Create and print to options window
 	options_window = create_new_window(options_info.height, options_info.width, options_info.start_y, options_info.start_x);
 	keypad(options_window, TRUE);
@@ -104,9 +114,13 @@ int main(void) {
 	}
 
  bubble:
+	destroy_window(title_window);
 	destroy_window(options_window);
-	
-	
+	input_window = create_new_window(input_info.height, input_info.width, input_info.start_y, input_info.start_x);
+	mvwprintw(input_window, 1, 2, "Please input the numbers you wish to sort: ");
+	wrefresh(input_window);
+	mvwscanw(input_window, 2, 2, "%d", &user_input);
+
 	getch();
 	goto menu;
 	

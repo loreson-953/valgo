@@ -19,6 +19,8 @@ void ncurse_initialization(void);
 WINDOW *create_new_window(int height, int width, int start_y, int start_x);
 extern int option_indent_x, option_title_y, option_1_y, option_final_y;
 void print_options_window(WINDOW *options_window, int highlight);
+void input_window_functions(WINDOW *input_window);
+
 void destroy_window(WINDOW *local_window);
 
 #endif
