@@ -3,6 +3,8 @@
 #include "algorithms.h"
 #include "ui.h"
 
+// Stuff for dynamic arrays
+
 typedef struct {
 	int *number;
 	size_t count;
@@ -18,25 +20,49 @@ do {\
 	array.number[array.count++] = input;\
 } while(0)
 
+
+// Window Information
+
+WINDOW *title_window;
+window_info title_info;
+
+WINDOW *options_window;
+window_info options_info;
+int option_indent_x;
+int option_title_y;
+int option_1_y;
+int option_final_y;
+
+WINDOW *bubble_window;
+window_info bubble_info;
+
+
 int main(void) {
 
 	int key_input;
 	int highlight = 4;
 
-	WINDOW *title_window;
-	window_info title_info;
 	title_info.start_x = 4;
 	title_info.start_y = 1;
 	title_info.height = 5;
 	title_info.width = 100;
 
-	WINDOW *options_window;
-	window_info options_info;
+	
 	options_info.start_x = title_info.start_x;
 	options_info.start_y = title_info.height + 2;
 	options_info.height = 8;
 	options_info.width = 100;
+	option_indent_x = 2;
+	option_title_y = 2;
+	option_1_y = 4;
+	option_final_y = 5;
 
+	bubble_info.start_x = title_info.start_x;
+	bubble_info.start_y = title_info.height + 2;
+	bubble_info.height = 8;
+	bubble_info.width = 100;
+
+		
 	// User input initialization
 	dynamic_array input;
 	input.count = 0;
@@ -52,6 +78,7 @@ int main(void) {
 	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "Welcome to Visual Algorithms.");
 	wrefresh(title_window);
 
+ menu:
 	// Create and print to options window
 	options_window = create_new_window(options_info.height, options_info.width, options_info.start_y, options_info.start_x);
 	keypad(options_window, TRUE);
@@ -61,16 +88,16 @@ int main(void) {
 		key_input = wgetch(options_window);
 		switch(key_input) {
 		case KEY_UP:
-			if (highlight == 4) highlight = 5;
+			if (highlight == option_1_y) highlight = option_final_y;
 			else highlight--;
 			break;
 		case KEY_DOWN:
-			if (highlight == 5) highlight = 4;
+			if (highlight == option_final_y) highlight = option_1_y;
 			else highlight++;
 			break;
 		case 10: // 10 is enter, for some reason
-			if (highlight == 5) goto end;
-			else if (highlight == 4) goto bubble;
+			if (highlight == option_final_y) goto exit;
+			else if (highlight == option_1_y) goto bubble;
 			break;
 		}
 		print_options_window(options_window, highlight);
@@ -78,19 +105,12 @@ int main(void) {
 
  bubble:
 	destroy_window(options_window);
-
-	WINDOW *bubble_window;
-	window_info bubble_info;
-	bubble_info.start_x = title_info.start_x;
-	bubble_info.start_y = title_info.height + 2;
-	bubble_info.height = 8;
-	bubble_info.width = 100;
-
+	
 	
 	getch();
-	goto end;
+	goto menu;
 	
- end:
+ exit:
 	endwin();
 	return 0;
 }

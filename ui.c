@@ -9,7 +9,6 @@ void ncurse_initialization(void) {
 	curs_set(0);
 }
 
-
 WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 	WINDOW *local_window;
 
@@ -22,19 +21,19 @@ WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 }
 
 void print_options_window(WINDOW *options_window, int highlight) {
-	mvwprintw(options_window, 2, 2, "Options:");
+	mvwprintw(options_window, option_title_y, option_indent_x, "Options:");
 
 	switch(highlight) {
 	case 4:
 		wattron(options_window, A_REVERSE);
-		mvwprintw(options_window, 4, 2, "1. Bubble Sort");
+		mvwprintw(options_window, option_1_y, option_indent_x, "1. Bubble Sort");
 		wattroff(options_window, A_REVERSE);
-		mvwprintw(options_window, 5, 2, "0. Exit");
+		mvwprintw(options_window, option_final_y, option_indent_x, "0. Exit");
 		break;
 	case 5:
-		mvwprintw(options_window, 4, 2, "1. Bubble Sort");
+		mvwprintw(options_window, option_1_y, option_indent_x, "1. Bubble Sort");
 		wattron(options_window, A_REVERSE);
-		mvwprintw(options_window, 5, 2, "0. Exit");
+		mvwprintw(options_window, option_final_y, option_indent_x, "0. Exit");
 		wattroff(options_window, A_REVERSE);
 		break;
 	}
