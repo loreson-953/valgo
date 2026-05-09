@@ -3,4 +3,4 @@ CFLAGS = -lncurses
 
 # On some systems like Gentoo and Arch, -ltinfo is a required flag for ncurses
 # Uncomment if this is the case on your system:
-#CFLAGS = -lncurses -ltinfo
+#CFLAGS += -ltinfo
