@@ -42,7 +42,7 @@ void print_options_window(WINDOW *options_window, int highlight) {
 }
 
 void input_window_functions(WINDOW *input_window) {
-	
+	//
 }
 
 void destroy_window(WINDOW *local_window) {
