@@ -108,7 +108,14 @@ int main(void) {
 		case 10: // 10 is enter, for some reason
 			if (highlight == option_final_y) goto exit;
 			else if (highlight == option_1_y) goto bubble;
+                        break;
+                /* shortcuts: */
+                case '1':
+			goto bubble;
 			break;
+                case '0': case 'q':
+			goto exit;
+                        break;
 		}
 		print_options_window(options_window, highlight);
 	}
