@@ -51,7 +51,7 @@ int main(void) {
 	title_info.height = 5;
 	title_info.width = 100;
 
-	
+
 	options_info.start_x = title_info.start_x;
 	options_info.start_y = title_info.height + 2;
 	options_info.height = 8;
@@ -65,13 +65,13 @@ int main(void) {
 	input_info.start_y = title_info.start_y;
 	input_info.height = 4;
 	input_info.width = 100;
-	
+
 	bubble_info.start_x = title_info.start_x;
 	bubble_info.start_y = title_info.start_y;
 	bubble_info.height = 8;
 	bubble_info.width = 100;
 
-		
+
 	// User input initialization
 	dynamic_array input;
 	input.count = 0;
@@ -83,7 +83,7 @@ int main(void) {
 	refresh();
 
  menu:
-	
+
 	// Create and print to title window
 	title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
 	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "Welcome to Visual Algorithms.");
@@ -130,7 +130,7 @@ int main(void) {
 
 	getch();
 	goto menu;
-	
+
  exit:
 	endwin();
 	return 0;
