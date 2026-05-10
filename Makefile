@@ -1,11 +1,17 @@
 CC = gcc
 TARGET = visual_algorithms
-SRCS = main.c ui.c algorithms.c
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
 
 include config.mk
 
-main:
-	${CC} -o ${TARGET} ${CFLAGS} ${SRCS}
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
 
 clean:
-	rm -f ${TARGET}
+	rm -f $(TARGET) *.o
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
