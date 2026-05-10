@@ -50,7 +50,6 @@ int main(int argc, char *argv[]) {
 		debug = 1;
 
 	int key_input;
-	int user_input;
 	int highlight = 4;
 
 	title_info.start_x = 4;
@@ -77,13 +76,6 @@ int main(int argc, char *argv[]) {
 	bubble_info.start_y = title_info.start_y;
 	bubble_info.height = 8;
 	bubble_info.width = 100;
-
-
-	// User input initialization
-	dynamic_array input;
-	input.count = 0;
-	input.capacity = 10; // 10 is a decent place to start with
-	input.number = malloc(input.capacity * sizeof(input.number));
 
 	// Initialize ncurses
 	ncurse_initialization();
