@@ -149,7 +149,8 @@ int scr_bubble() {
 
         wrefresh(input_window);
 
-	getch();
+        noecho();
+        getch();
 
 	free(user_input);
 	return 1; /* successful run */
