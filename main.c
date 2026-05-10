@@ -20,6 +20,7 @@ do {\
 	array.number[array.count++] = input;\
 } while(0)
 
+int scr_bubble();
 
 // Window Information
 
@@ -41,7 +42,6 @@ window_info bubble_info;
 
 
 int main(void) {
-
 	int key_input;
 	int user_input;
 	int highlight = 4;
@@ -122,16 +122,35 @@ int main(void) {
 
  bubble:
 	destroy_window(title_window);
-	destroy_window(options_window);
-	input_window = create_new_window(input_info.height, input_info.width, input_info.start_y, input_info.start_x);
-	mvwprintw(input_window, 1, 2, "Please input the numbers you wish to sort: ");
-	wrefresh(input_window);
-	mvwscanw(input_window, 2, 2, "%d", &user_input);
-
-	getch();
+        destroy_window(options_window);
+	scr_bubble();
 	goto menu;
 
  exit:
 	endwin();
 	return 0;
+}
+
+/*
+ * success: return 1
+ * failure: return 0
+ */
+int scr_bubble() {
+	char *user_input = malloc(32);
+
+	input_window = create_new_window(input_info.height, input_info.width, input_info.start_y, input_info.start_x);
+
+        echo();
+
+	mvwprintw(input_window, 1, 2, "Please input the numbers you wish to sort: ");
+	wrefresh(input_window);
+
+        mvwgetnstr(input_window, 1, 1 + sizeof("Please input the numbers you wish to sort: "), user_input, 31);
+
+        wrefresh(input_window);
+
+	getch();
+
+	free(user_input);
+	return 1; /* successful run */
 }
