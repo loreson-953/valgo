@@ -23,6 +23,8 @@ do {\
 
 int scr_bubble();
 
+int debug = 0;
+
 // Window Information
 
 WINDOW *title_window;
@@ -42,7 +44,10 @@ WINDOW *bubble_window;
 window_info bubble_info;
 
 
-int main(void) {
+int main(int argc, char *argv[]) {
+	if ( argc > 1 && !strncmp("-d", argv[1], 2))
+		debug = 1;
+
 	int key_input;
 	int user_input;
 	int highlight = 4;
@@ -137,8 +142,6 @@ int main(void) {
  * failure: return 0
  */
 int scr_bubble() {
-	int i = 0;
-
 	char *user_input = malloc(32);
         char delim[] = ", ";
         char *n;
@@ -161,12 +164,22 @@ int scr_bubble() {
 
         n = strtok(user_input, delim);
 
-        free(user_input);
-
         while (n) {
 		append_array(nums, atoi(n));
-		n = strtok(NULL, delim);
+                n = strtok(NULL, delim);
+        }
+
+        free(user_input);
+
+	if (debug) {
+		int total = 0;
+		for (int j = 0; j < nums.count; j++) {
+			total += nums.number[j];
+		}
+		mvwprintw(input_window, 2, 2, "total %i, from %i entries.", total, (int)nums.count);
 	}
+
+        wrefresh(input_window);
 
         noecho();
         getch();
