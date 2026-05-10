@@ -1,5 +1,6 @@
 CC = gcc
 TARGET = visual_algorithms
+CFLAGS = -Wall -g
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
