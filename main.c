@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include <ncurses.h>
 #include "algorithms.h"
 #include "ui.h"
@@ -136,7 +137,17 @@ int main(void) {
  * failure: return 0
  */
 int scr_bubble() {
+	int i = 0;
+
 	char *user_input = malloc(32);
+        char delim[] = ", ";
+        char *n;
+
+        dynamic_array nums;
+
+        nums.count = 0;
+        nums.capacity = 10;
+        nums.number = malloc(nums.capacity * sizeof(int));
 
 	input_window = create_new_window(input_info.height, input_info.width, input_info.start_y, input_info.start_x);
 
@@ -146,12 +157,19 @@ int scr_bubble() {
 	wrefresh(input_window);
 
         mvwgetnstr(input_window, 1, 1 + sizeof("Please input the numbers you wish to sort: "), user_input, 31);
-
         wrefresh(input_window);
+
+        n = strtok(user_input, delim);
+
+        free(user_input);
+
+        while (n) {
+		append_array(nums, atoi(n));
+		n = strtok(NULL, delim);
+	}
 
         noecho();
         getch();
 
-	free(user_input);
 	return 1; /* successful run */
 }
