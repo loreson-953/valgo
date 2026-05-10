@@ -97,11 +97,11 @@ int main(void) {
 	while(1) {
 		key_input = wgetch(options_window);
 		switch(key_input) {
-		case KEY_UP:
+		case KEY_UP: case 'k': case 16:
 			if (highlight == option_1_y) highlight = option_final_y;
 			else highlight--;
 			break;
-		case KEY_DOWN:
+		case KEY_DOWN: case 'j': case 14:
 			if (highlight == option_final_y) highlight = option_1_y;
 			else highlight++;
 			break;
