@@ -21,6 +21,7 @@ do {\
 	array.number[array.count++] = input;\
 } while(0)
 
+void emancipate(dynamic_array *array);
 int scr_bubble();
 
 int debug = 0;
@@ -137,6 +138,12 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
+/* free a dynamic array*/
+void emancipate(dynamic_array *array) {
+	array->count = array->capacity = -1;
+	free(array->number);
+}
+
 /*
  * success: return 1
  * failure: return 0
@@ -159,7 +166,7 @@ int scr_bubble() {
 	mvwprintw(input_window, 1, 2, "Please input the numbers you wish to sort: ");
 	wrefresh(input_window);
 
-        mvwgetnstr(input_window, 1, 1 + sizeof("Please input the numbers you wish to sort: "), user_input, 31);
+        mvwgetnstr(input_window, 1, 45, user_input, 31);
         wrefresh(input_window);
 
         n = strtok(user_input, delim);
@@ -173,7 +180,7 @@ int scr_bubble() {
 
 	if (debug) {
 		int total = 0;
-		for (int j = 0; j < nums.count; j++) {
+		for (size_t j = 0; j < nums.count; j++) {
 			total += nums.number[j];
 		}
 		mvwprintw(input_window, 2, 2, "total %i, from %i entries.", total, (int)nums.count);
@@ -183,6 +190,8 @@ int scr_bubble() {
 
         noecho();
         getch();
+
+        emancipate(&nums);
 
 	return 1; /* successful run */
 }
