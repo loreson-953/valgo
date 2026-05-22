@@ -3,9 +3,11 @@
 #include <ncurses.h>
 #include "algorithms.h"
 #include "ui.h"
+#include "dynamic_arrays.h"
 
 // Stuff for dynamic arrays
 
+/*
 typedef struct {
 	int *number;
 	size_t count;
@@ -20,8 +22,9 @@ do {\
 	}\
 	array.number[array.count++] = input;\
 } while(0)
-
 void emancipate(dynamic_array *array);
+*/
+
 int scr_bubble();
 
 int debug = 0;
@@ -131,10 +134,12 @@ int main(int argc, char *argv[]) {
 }
 
 /* free a dynamic array*/
+/*
 void emancipate(dynamic_array *array) {
 	array->count = array->capacity = -1;
 	free(array->number);
 }
+*/
 
 /*
  * success: return 1
