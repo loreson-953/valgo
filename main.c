@@ -5,25 +5,6 @@
 #include "ui.h"
 #include "dynamic_arrays.h"
 
-// Stuff for dynamic arrays
-
-/*
-typedef struct {
-	int *number;
-	size_t count;
-	size_t capacity;
-} dynamic_array;
-
-#define append_array(array, input)\
-do {\
-	if (array.count >= array.capacity) {\
-		array.capacity += sizeof(int);\
-		array.number = realloc(array.number, array.capacity * sizeof(array.number));\
-	}\
-	array.number[array.count++] = input;\
-} while(0)
-void emancipate(dynamic_array *array);
-*/
 
 int scr_bubble();
 
@@ -133,14 +114,6 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-/* free a dynamic array*/
-/*
-void emancipate(dynamic_array *array) {
-	array->count = array->capacity = -1;
-	free(array->number);
-}
-*/
-
 /*
  * success: return 1
  * failure: return 0
@@ -187,6 +160,9 @@ int scr_bubble() {
 
         noecho();
         getch();
+		
+		bubble_sort(nums.number, nums.count);
+		
 
         emancipate(&nums);
 
