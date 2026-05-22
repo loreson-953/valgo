@@ -5,29 +5,9 @@
 #include "ui.h"
 #include "dynamic_arrays.h"
 
-
 int scr_bubble();
 
 int debug = 0;
-
-// Window Information
-
-WINDOW *title_window;
-window_info title_info;
-
-WINDOW *options_window;
-window_info options_info;
-int option_indent_x;
-int option_title_y;
-int option_1_y;
-int option_final_y;
-
-WINDOW *input_window;
-window_info input_info;
-
-WINDOW *bubble_window;
-window_info bubble_info;
-
 
 int main(int argc, char *argv[]) {
 	if ( argc > 1 && !strncmp("-d", argv[1], 2))
@@ -36,6 +16,7 @@ int main(int argc, char *argv[]) {
 	int key_input;
 	int highlight = 4;
 
+	/*
 	title_info.start_x = 4;
 	title_info.start_y = 1;
 	title_info.height = 5;
@@ -60,7 +41,8 @@ int main(int argc, char *argv[]) {
 	bubble_info.start_y = title_info.start_y;
 	bubble_info.height = 8;
 	bubble_info.width = 100;
-
+	*/
+	
 	// Initialize ncurses
 	ncurse_initialization();
 	refresh();

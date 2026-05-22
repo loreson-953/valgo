@@ -14,6 +14,22 @@ typedef struct {
 
 } window_info;
 
+extern WINDOW *title_window;
+extern window_info title_info;
+
+extern WINDOW *options_window;
+extern window_info options_info;
+extern int option_indent_x;
+extern int option_title_y;
+extern int option_1_y;
+extern int option_final_y;
+ 
+extern WINDOW *input_window;
+extern window_info input_info;
+
+extern WINDOW *bubble_window;
+extern window_info bubble_info;
+
 void ncurse_initialization(void);
 
 WINDOW *create_new_window(int height, int width, int start_y, int start_x);

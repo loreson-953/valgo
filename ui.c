@@ -1,12 +1,54 @@
 #include "ui.h"
 #include <ncurses.h>
 
-void ncurse_initialization(void) {
+WINDOW *title_window;
+window_info title_info;
+
+WINDOW *options_window;
+window_info options_info;
+int option_indent_x;
+int option_title_y;
+int option_1_y;
+int option_final_y;
+
+WINDOW *input_window;
+window_info input_info;
+
+WINDOW *bubble_window;
+window_info bubble_info;
+
+void ncurse_initialization(void) { 
+	title_info.start_x = 4;
+	title_info.start_y = 1;
+	title_info.height = 5;
+	title_info.width = 100;
+
+
+	options_info.start_x = title_info.start_x;
+	options_info.start_y = title_info.height + 2;
+	options_info.height = 8;
+	options_info.width = 100;
+	option_indent_x = 2;
+	option_title_y = 2;
+	option_1_y = 4;
+	option_final_y = 5;
+
+	input_info.start_x = title_info.start_x;
+	input_info.start_y = title_info.start_y;
+	input_info.height = 4;
+	input_info.width = 100;
+
+	bubble_info.start_x = title_info.start_x;
+	bubble_info.start_y = title_info.start_y;
+	bubble_info.height = 8;
+	bubble_info.width = 100;
+	
 	initscr();
 	clear();
 	noecho();
 	cbreak();
 	curs_set(0);
+	
 }
 
 WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
