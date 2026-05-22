@@ -16,33 +16,6 @@ int main(int argc, char *argv[]) {
 	int key_input;
 	int highlight = 4;
 
-	/*
-	title_info.start_x = 4;
-	title_info.start_y = 1;
-	title_info.height = 5;
-	title_info.width = 100;
-
-
-	options_info.start_x = title_info.start_x;
-	options_info.start_y = title_info.height + 2;
-	options_info.height = 8;
-	options_info.width = 100;
-	option_indent_x = 2;
-	option_title_y = 2;
-	option_1_y = 4;
-	option_final_y = 5;
-
-	input_info.start_x = title_info.start_x;
-	input_info.start_y = title_info.start_y;
-	input_info.height = 4;
-	input_info.width = 100;
-
-	bubble_info.start_x = title_info.start_x;
-	bubble_info.start_y = title_info.start_y;
-	bubble_info.height = 8;
-	bubble_info.width = 100;
-	*/
-	
 	// Initialize ncurses
 	ncurse_initialization();
 	refresh();
