@@ -10,13 +10,12 @@ int scr_bubble();
 int debug = 0;
 
 int main(int argc, char *argv[]) {
-	if ( argc > 1 && !strncmp("-d", argv[1], 2))
-		debug = 1;
+	if ( argc > 1 && !strncmp("-d", argv[1], 2)) debug = 1;
 
 	int key_input;
 	int highlight = 4;
 
-	// Initialize ncurses
+	// Creates information for windows and initializes ncurses
 	ncurse_initialization();
 	refresh();
 
@@ -43,7 +42,7 @@ int main(int argc, char *argv[]) {
 			if (highlight == option_final_y) highlight = option_1_y;
 			else highlight++;
 			break;
-		case 10: // 10 is enter, for some reason
+		case 10: // Enter 
 			if (highlight == option_final_y) goto exit;
 			else if (highlight == option_1_y) goto bubble;
                         break;
