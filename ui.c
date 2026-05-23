@@ -70,6 +70,10 @@ WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 void print_options_window(WINDOW *options_window, int highlight) {
 	mvwprintw(options_window, option_title_y, option_indent_x, "%s", option_title_text);
 
+	for (int i = option_1_y; i < option_final_y; i++) {
+		int y = option_1_y;
+	}
+	
 	switch(highlight) {
 	case 4:
 		wattron(options_window, A_REVERSE);
