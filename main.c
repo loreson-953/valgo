@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
 	// Create and print to title window
 	title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
-	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "Welcome to Visual Algorithms.");
+	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "%s", title_text);
 	wrefresh(title_window);
 
 	// Create and print to options window

@@ -3,6 +3,7 @@
 
 WINDOW *title_window;
 window_info title_info;
+char title_text[] = "Welcome to Visual Algorithms.";
 
 WINDOW *options_window;
 window_info options_info;
@@ -10,6 +11,9 @@ int option_indent_x;
 int option_title_y;
 int option_1_y;
 int option_final_y;
+char option_title_text[] = "Options:";
+char option_1_text[] = "1. Bubble Sort";
+char option_0_text[] = "0. Exit";
 
 WINDOW *input_window;
 window_info input_info;
@@ -32,7 +36,8 @@ void ncurse_initialization(void) {
 	option_title_y = 2;
 	option_1_y = 4;
 	option_final_y = 5;
-
+	
+	
 	input_info.start_x = title_info.start_x;
 	input_info.start_y = title_info.start_y;
 	input_info.height = 4;
@@ -63,14 +68,14 @@ WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 }
 
 void print_options_window(WINDOW *options_window, int highlight) {
-	mvwprintw(options_window, option_title_y, option_indent_x, "Options:");
+	mvwprintw(options_window, option_title_y, option_indent_x, "%s", option_title_text);
 
 	switch(highlight) {
 	case 4:
 		wattron(options_window, A_REVERSE);
-		mvwprintw(options_window, option_1_y, option_indent_x, "1. Bubble Sort");
+		mvwprintw(options_window, option_1_y, option_indent_x, "%s", option_1_text);
 		wattroff(options_window, A_REVERSE);
-		mvwprintw(options_window, option_final_y, option_indent_x, "0. Exit");
+		mvwprintw(options_window, option_final_y, option_indent_x, "%s", option_0_text);
 		break;
 	case 5:
 		mvwprintw(options_window, option_1_y, option_indent_x, "1. Bubble Sort");
