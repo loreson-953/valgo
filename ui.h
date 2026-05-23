@@ -14,6 +14,8 @@ typedef struct {
 
 } window_info;
 
+extern int highlight;
+
 extern WINDOW *title_window;
 extern window_info title_info;
 extern char title_text[];
@@ -36,6 +38,10 @@ extern window_info bubble_info;
 void ncurse_initialization(void);
 
 WINDOW *create_new_window(int height, int width, int start_y, int start_x);
+void main_menu(void);
+void create_title_window(void);
+void create_menu_window(void);
+
 extern int option_indent_x, option_title_y, option_1_y, option_final_y;
 void print_options_window(WINDOW *options_window, int highlight);
 void input_window_functions(WINDOW *input_window);

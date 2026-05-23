@@ -54,8 +54,7 @@ void ncurse_initialization(void) {
 	clear();
 	noecho();
 	cbreak();
-	curs_set(0);
-	
+	curs_set(0);	
 }
 
 WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
@@ -67,6 +66,25 @@ WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 	wrefresh(local_window);
 
 	return local_window;
+}
+
+void main_menu(void) {
+	create_title_window();
+	create_menu_window();
+}
+
+void create_title_window(void) {
+		title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
+	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "%s", title_text);
+	wrefresh(title_window);
+
+}
+
+void create_menu_window(void) {
+	options_window = create_new_window(options_info.height, options_info.width, options_info.start_y, options_info.start_x);
+	keypad(options_window, TRUE);
+	print_options_window(options_window, highlight);
+
 }
 
 void print_options_window(WINDOW *options_window, int highlight) {

@@ -8,29 +8,20 @@
 int scr_bubble();
 
 int debug = 0;
+int highlight;
 
 int main(int argc, char *argv[]) {
 	if ( argc > 1 && !strncmp("-d", argv[1], 2)) debug = 1;
 
 	int key_input;
-	int highlight = 4;
+	highlight = 4;
 
 	// Creates information for windows and initializes ncurses
 	ncurse_initialization();
 	refresh();
 
- menu:
-
-	// Create and print to title window
-	title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
-	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "%s", title_text);
-	wrefresh(title_window);
-
-	// Create and print to options window
-	options_window = create_new_window(options_info.height, options_info.width, options_info.start_y, options_info.start_x);
-	keypad(options_window, TRUE);
-	print_options_window(options_window, highlight);
-
+ menu: main_menu();
+	
 	while(1) {
 		key_input = wgetch(options_window);
 		switch(key_input) {
@@ -59,7 +50,7 @@ int main(int argc, char *argv[]) {
 
  bubble:
 	destroy_window(title_window);
-        destroy_window(options_window);
+    destroy_window(options_window);
 	scr_bubble();
 	goto menu;
 
