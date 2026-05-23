@@ -25,8 +25,7 @@ extern int option_title_y;
 extern int option_1_y;
 extern int option_final_y;
 extern char option_title_text[];
-extern char option_1_text[];
-extern char option_0_text[];
+extern char *option_text[];
 
 extern WINDOW *input_window;
 extern window_info input_info;

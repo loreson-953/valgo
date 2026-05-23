@@ -12,8 +12,10 @@ int option_title_y;
 int option_1_y;
 int option_final_y;
 char option_title_text[] = "Options:";
-char option_1_text[] = "1. Bubble Sort";
-char option_0_text[] = "0. Exit";
+char *option_text[] = {
+	"1. Bubble Sort",
+	"0. Exit"
+};
 
 WINDOW *input_window;
 window_info input_info;
@@ -70,26 +72,21 @@ WINDOW *create_new_window(int height, int width, int start_y, int start_x) {
 void print_options_window(WINDOW *options_window, int highlight) {
 	mvwprintw(options_window, option_title_y, option_indent_x, "%s", option_title_text);
 
-	for (int i = option_1_y; i < option_final_y; i++) {
-		int y = option_1_y;
-	}
-	
-	switch(highlight) {
-	case 4:
-		wattron(options_window, A_REVERSE);
-		mvwprintw(options_window, option_1_y, option_indent_x, "%s", option_1_text);
-		wattroff(options_window, A_REVERSE);
-		mvwprintw(options_window, option_final_y, option_indent_x, "%s", option_0_text);
-		break;
-	case 5:
-		mvwprintw(options_window, option_1_y, option_indent_x, "1. Bubble Sort");
-		wattron(options_window, A_REVERSE);
-		mvwprintw(options_window, option_final_y, option_indent_x, "0. Exit");
-		wattroff(options_window, A_REVERSE);
-		break;
-	}
+	int amount_options = sizeof(option_text) / sizeof(char *);
+	int y = option_1_y;
 
+	
+	for (int i = 0; i < amount_options; i++) {
+		if (highlight == y) {
+			wattron(options_window, A_REVERSE);
+			mvwprintw(options_window, y, option_indent_x, "%s", option_text[i]);
+			wattroff(options_window, A_REVERSE);
+		} else mvwprintw(options_window, y, option_indent_x, "%s", option_text[i]);
+		y++;
+	}
+		
 	wrefresh(options_window);
+
 }
 
 void input_window_functions(WINDOW *input_window) {
