@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 			goto exit;
                         break;
 		}
-		print_options_window(options_window, highlight);
+		print_options_window();
 	}
 
  bubble:
@@ -65,33 +65,33 @@ int main(int argc, char *argv[]) {
  */
 int scr_bubble() {
 	char *user_input = malloc(32);
-        char delim[] = ", ";
-        char *n;
-
-        dynamic_array nums;
-
-        nums.count = 0;
-        nums.capacity = 10;
-        nums.number = malloc(nums.capacity * sizeof(int));
+	char delim[] = ", ";
+	char *n;
+	
+	dynamic_array nums;
+	
+	nums.count = 0;
+	nums.capacity = 10;
+	nums.number = malloc(nums.capacity * sizeof(int));
 
 	input_window = create_new_window(input_info.height, input_info.width, input_info.start_y, input_info.start_x);
 
-        echo();
+	echo();
 
 	mvwprintw(input_window, 1, 2, "Please input the numbers you wish to sort: ");
 	wrefresh(input_window);
 
-        mvwgetnstr(input_window, 1, 45, user_input, 31);
-        wrefresh(input_window);
+	mvwgetnstr(input_window, 1, 45, user_input, 31);
+	wrefresh(input_window);
+	
+	n = strtok(user_input, delim);
 
-        n = strtok(user_input, delim);
-
-        while (n) {
+	while (n) {
 		append_array(nums, atoi(n));
-                n = strtok(NULL, delim);
-        }
-
-        free(user_input);
+		n = strtok(NULL, delim);
+	}
+	
+	free(user_input);
 
 	if (debug) {
 		int total = 0;
@@ -101,15 +101,18 @@ int scr_bubble() {
 		mvwprintw(input_window, 2, 2, "total %i, from %i entries.", total, (int)nums.count);
 	}
 
-        wrefresh(input_window);
+	wrefresh(input_window);
 
-        noecho();
-        getch();
-		
-		bubble_sort(nums.number, nums.count);
-		
+	noecho();
+	getch();
+	destroy_window(input_window);
 
-        emancipate(&nums);
-
+	create_bubble_window();
+	bubble_sort(nums.number, nums.count);		
+	getch();
+	
+	emancipate(&nums);
+	destroy_window(bubble_window);
+	
 	return 1; /* successful run */
 }

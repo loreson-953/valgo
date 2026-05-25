@@ -43,8 +43,9 @@ void create_title_window(void);
 void create_menu_window(void);
 
 extern int option_indent_x, option_title_y, option_1_y, option_final_y;
-void print_options_window(WINDOW *options_window, int highlight);
+void print_options_window(void);
 void input_window_functions(WINDOW *input_window);
+void create_bubble_window(void);
 
 void destroy_window(WINDOW *local_window);
 

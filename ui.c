@@ -74,7 +74,7 @@ void main_menu(void) {
 }
 
 void create_title_window(void) {
-		title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
+	title_window = create_new_window(title_info.height, title_info.width, title_info.start_y, title_info.start_x);
 	mvwprintw(title_window, title_info.height / 2, (title_info.width - 30) / 2, "%s", title_text);
 	wrefresh(title_window);
 
@@ -83,11 +83,11 @@ void create_title_window(void) {
 void create_menu_window(void) {
 	options_window = create_new_window(options_info.height, options_info.width, options_info.start_y, options_info.start_x);
 	keypad(options_window, TRUE);
-	print_options_window(options_window, highlight);
+	print_options_window();
 
 }
 
-void print_options_window(WINDOW *options_window, int highlight) {
+void print_options_window(void) {
 	mvwprintw(options_window, option_title_y, option_indent_x, "%s", option_title_text);
 
 	int amount_options = sizeof(option_text) / sizeof(char *);
@@ -109,6 +109,13 @@ void print_options_window(WINDOW *options_window, int highlight) {
 
 void input_window_functions(WINDOW *input_window) {
 	//
+}
+
+void create_bubble_window(void) {
+	bubble_window = create_new_window(bubble_info.height, bubble_info.width, bubble_info.start_y, bubble_info.start_x);
+	mvwprintw(bubble_window, bubble_info.start_y + 1, bubble_info.start_x + 1, "Sorting:");
+	wrefresh(bubble_window);
+	
 }
 
 void destroy_window(WINDOW *local_window) {
