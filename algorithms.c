@@ -16,7 +16,7 @@ void bubble_sort(int array[], int length) {
 
 			for(int k = 0; k < length; k++) mvwprintw(bubble_window, bubble_info.start_y + 3, sizeof(array[k]) / sizeof(int), "%d, ", array[k]);
 			wrefresh(bubble_window);
-			usleep(100000);
+			usleep(1000000000);
 		}
 	}
 }
