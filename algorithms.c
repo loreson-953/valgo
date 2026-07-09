@@ -83,13 +83,11 @@ void bubble_sort(int array[], int length) {
 }
 
 void print_bubble_array(int array[], int length) {
-	for(int k = 0; k < length; k++) {
-				mvwprintw(bubble_window,
-						  bubble_info.start_y + 3,
-						  bubble_info.start_x + (sizeof(array[k]) / sizeof(int)) + k, "%d", array[k]);
-				wprintw(bubble_window, " ");
+	wmove(bubble_window, bubble_info.start_y + 3, bubble_info.start_x + 1);
+	
+	for (int k = 0; k < length; k++) {
+		wprintw(bubble_window, "%d ", array[k]);
 	}
 	
 	wrefresh(bubble_window);
-
 }
