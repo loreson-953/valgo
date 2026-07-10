@@ -1,6 +1,6 @@
 # Visual Algorithms
 
-A ncurses TUI for demonstrating algorithms.
+An ncurses TUI written in C to demonstrate the process of sorting algorithms.
 
 ### Compiling
 
