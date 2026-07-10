@@ -60,12 +60,16 @@ int bubble(int debug) {
 
 
 void bubble_sort(int array[], int length) {
+	int progress;
+
 	for (int i = 0; i < length - 1; i++) {
 		int temp = 0;
 
+		
 		__useconds_t delay = 1 * 1000000;
 
-		print_bubble_array(array, length);
+		print_bubble_array(array, length, progress);
+		progress++;
 		usleep(delay);
 		
 		for (int j = 0; j < length - i - 1; j++) {
@@ -74,15 +78,23 @@ void bubble_sort(int array[], int length) {
 				array[j] = array[j + 1];
 				array[j + 1] = temp;
 			}
-			
-			print_bubble_array(array, length);
+ 			
+			print_bubble_array(array, length, progress);
+			progress++;
 			wrefresh(bubble_window);
 			usleep(delay);
 		}
 	}
 }
 
-void print_bubble_array(int array[], int length) {
+void print_bubble_array(int array[], int length, int progress) {
+	char progress_char;
+	if (progress % 2 == 0) progress_char = '|';
+	else progress_char = '-';
+
+
+	mvwprintw(bubble_window, bubble_info.start_y + 1, bubble_info.start_x + 1, "Sorting: %c", progress_char);
+	
 	wmove(bubble_window, bubble_info.start_y + 3, bubble_info.start_x + 1);
 	
 	for (int k = 0; k < length; k++) {

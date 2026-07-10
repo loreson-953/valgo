@@ -113,7 +113,6 @@ void input_window_functions(WINDOW *input_window) {
 
 void create_bubble_window(void) {
 	bubble_window = create_new_window(bubble_info.height, bubble_info.width, bubble_info.start_y, bubble_info.start_x);
-	mvwprintw(bubble_window, bubble_info.start_y + 1, bubble_info.start_x + 1, "Sorting:");
 	wrefresh(bubble_window);
 	
 }

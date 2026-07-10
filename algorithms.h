@@ -3,6 +3,6 @@
 
 int bubble(int debug);
 void bubble_sort(int array[], int length);
-void print_bubble_array(int array[], int length);
+void print_bubble_array(int array[], int length, int progress);
 
 #endif
