@@ -3,7 +3,7 @@
 #include "ui.h"
 #include <unistd.h>
 #include <string.h>
-
+ 
 int bubble(int debug) {
 	char *user_input = malloc(32);
 	char delim[] = ", ";
@@ -92,7 +92,6 @@ void print_bubble_array(int array[], int length, int progress) {
 	if (progress % 2 == 0) progress_char = '|';
 	else progress_char = '-';
 
-
 	mvwprintw(bubble_window, bubble_info.start_y + 1, bubble_info.start_x + 1, "Sorting: %c", progress_char);
 	
 	wmove(bubble_window, bubble_info.start_y + 3, bubble_info.start_x + 1);
@@ -103,3 +102,4 @@ void print_bubble_array(int array[], int length, int progress) {
 	
 	wrefresh(bubble_window);
 }
+

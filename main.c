@@ -34,12 +34,15 @@ int main(int argc, char *argv[]) {
 		case 10: // Enter 
 			if (highlight == option_final_y) goto exit;
 			else if (highlight == option_1_y) goto bubble;
-                        break;
-                /* shortcuts: */
-                case '1':
+			break;
+			/* shortcuts: */
+		case '1':
 			goto bubble;
 			break;
-                case '0': case 'q':
+		case '2':
+			goto merge;
+			break;
+		case '0': case 'q':
 			goto exit;
                         break;
 		}
@@ -52,6 +55,11 @@ int main(int argc, char *argv[]) {
 	bubble(debug);
 	goto menu;
 
+ merge:
+	destroy_window(title_window);
+	destroy_window(options_window);
+	goto menu;
+	
  exit:
 	endwin();
 	return 0;
