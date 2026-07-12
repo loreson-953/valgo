@@ -16,7 +16,7 @@ make
 ### Usage
 
 ```sh
-./build/visual_algorithms # run normally
+./bin/visual_algorithms # run normally
 
-./build/visual_algorithms -d # run in debug mode
+./bin/visual_algorithms -d # run in debug mode
 ```

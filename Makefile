@@ -13,7 +13,8 @@ include config.mk
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) -I $(INC) $(CFLAGS) $(OBJ) -o build/$(TARGET)
+	@mkdir -p bin
+	$(CC) -I $(INC) $(CFLAGS) $(OBJ) -o bin/$(TARGET)
 
 
 build/%.o: src/%.c
@@ -22,3 +23,4 @@ build/%.o: src/%.c
 
 clean:
 	rm -rf build/*
+	rm -rf bin/*
