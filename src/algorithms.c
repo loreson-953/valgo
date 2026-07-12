@@ -69,7 +69,8 @@ void bubble_sort(int array[], int length) {
 		__useconds_t delay = 1 * 1000000;
 
 		print_bubble_array(array, length, progress);
-		progress++;
+		if (progress != length - 1) progress++;
+		else progress = 0;
 		usleep(delay);
 		
 		for (int j = 0; j < length - i - 1; j++) {
@@ -80,7 +81,8 @@ void bubble_sort(int array[], int length) {
 			}
  			
 			print_bubble_array(array, length, progress);
-			progress++;
+			if (progress != length - 1) progress++;
+			else progress = 0;
 			wrefresh(bubble_window);
 			usleep(delay);
 		}
@@ -97,8 +99,10 @@ void print_bubble_array(int array[], int length, int progress) {
 	wmove(bubble_window, bubble_info.start_y + 3, bubble_info.start_x + 1);
 	
 	for (int k = 0; k < length; k++) {
-		
-		wprintw(bubble_window, "%d ", array[k]);
+		if ((k != progress) && (k != progress + 1)) wprintw(bubble_window, "%d ", array[k]);
+		else if (k == progress) wprintw(bubble_window, "[%d ", array[k]);
+		else if (k == progress + 1 && progress != length + 1) wprintw(bubble_window, "%d] ", array[k]);
+		else if (k == progress + 1 && progress == length + 1) wprintw(bubble_window, "[%d] ", array[k]);
 	}
 	
 	wrefresh(bubble_window);
