@@ -97,6 +97,7 @@ void print_bubble_array(int array[], int length, int progress) {
 	wmove(bubble_window, bubble_info.start_y + 3, bubble_info.start_x + 1);
 	
 	for (int k = 0; k < length; k++) {
+		
 		wprintw(bubble_window, "%d ", array[k]);
 	}
 	

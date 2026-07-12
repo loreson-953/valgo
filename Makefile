@@ -1,18 +1,24 @@
+# Compiler / Options
 CC = gcc
 TARGET = visual_algorithms
 CFLAGS = -Wall -g
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
+
+# Source 
+SRC = $(wildcard src/*.c)
+OBJ = $(patsubst src/%.c, build/%.o, $(SRC))
+INC = $(PWD)/include
 
 include config.mk
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
+	$(CC) -I $(INC) $(CFLAGS) $(OBJ) -o build/$(TARGET)
+
+
+build/%.o: src/%.c
+	@mkdir -p build
+	$(CC) -I $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) *.o
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	rm -rf build/*
