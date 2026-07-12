@@ -60,7 +60,7 @@ int bubble(int debug) {
 
 
 void bubble_sort(int array[], int length) {
-	int progress;
+	int progress = 0;
 
 	for (int i = 0; i < length - 1; i++) {
 		int temp = 0;
