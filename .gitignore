@@ -1,2 +1,4 @@
 .ccls-cache
 compile-commands.json
+bin/*
+build/*
