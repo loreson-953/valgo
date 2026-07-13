@@ -100,9 +100,9 @@ void print_bubble_array(int array[], int length, int progress) {
 	
 	for (int k = 0; k < length; k++) {
 		if ((k != progress) && (k != progress + 1)) wprintw(bubble_window, "%d ", array[k]);
-		else if (k == progress) wprintw(bubble_window, "[%d ", array[k]);
-		else if (k == progress + 1 && progress != length + 1) wprintw(bubble_window, "%d] ", array[k]);
-		else if (k == progress + 1 && progress == length + 1) wprintw(bubble_window, "[%d] ", array[k]);
+		else if ((k == progress) && (k != length - 1)) wprintw(bubble_window, "[%d ", array[k]);
+		else if ((k == progress + 1) && (progress != length + 1)) wprintw(bubble_window, "%d] ", array[k]);
+		else if ((k == progress) && (progress == length - 1)) wprintw(bubble_window, "[%d] ", array[k]);
 	}
 	
 	wrefresh(bubble_window);
