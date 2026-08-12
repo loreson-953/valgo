@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
 	int key_input;
 	highlight = 4;
-
+	
 	// Creates information for windows and initializes ncurses
 	ncurse_initialization();
 	refresh();
@@ -44,14 +44,14 @@ int main(int argc, char *argv[]) {
 			break;
 		case '0': case 'q':
 			goto exit;
-                        break;
+			break;
 		}
 		print_options_window();
 	}
 
  bubble:
 	destroy_window(title_window);
-    destroy_window(options_window);
+	destroy_window(options_window);
 	bubble(debug);
 	goto menu;
 

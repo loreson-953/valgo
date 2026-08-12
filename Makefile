@@ -1,6 +1,6 @@
 # Compiler / Options
 CC = gcc
-TARGET = visual_algorithms
+TARGET = valgo
 CFLAGS = -Wall -g
 
 # Source 
@@ -24,3 +24,6 @@ build/%.o: src/%.c
 clean:
 	rm -rf build/*
 	rm -rf bin/*
+
+install: $(TARGET)
+	sudo cp bin/$(TARGET) /usr/local/bin

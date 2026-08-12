@@ -2,12 +2,14 @@
 
 An ncurses TUI written in C to demonstrate the process of sorting algorithms.
 
-## Install and Compile
+## Compilation and Installation
 
 ```
-git clone https://github.com/loreson-953/visual-algorithms
-cd ./visual-algorithms
+git clone https://github.com/loreson-953/valgo
+cd ./valgo
 make
+make install
+valgo
 ```
 
 **Note:** Check `config.mk` for notes on compilation errors with certain distros.
@@ -16,7 +18,7 @@ make
 ### Usage
 
 ```sh
-./bin/visual_algorithms # run normally
+valgo # Run normally
 
-./bin/visual_algorithms -d # run in debug mode
+valgo -d # Run in debug mode
 ```

@@ -3,7 +3,7 @@
 
 WINDOW *title_window;
 window_info title_info;
-char title_text[] = "Welcome to Visual Algorithms.";
+char title_text[] = "Welcome to Visual ALGOrithms.";
 
 WINDOW *options_window;
 window_info options_info;
